@@ -1,0 +1,13 @@
+{
+  "name": "ぐるり360｜360度内見ツアー制作サービス",
+  "short_name": "ぐるり360",
+  "description": "民泊・レンタルスペース向けの360度内見ツアー制作サービス。撮影からWeb公開までまるごと対応。",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#faf6ec",
+  "theme_color": "#0f2d5c",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
