@@ -224,6 +224,46 @@
     .btn-row .btn{ width:auto; }
   }
 
+  /* ===== Sticky CTA bar（スクロール追従。#heroと#closingが画面外のときだけ表示） ===== */
+  .sticky-cta{
+    position:fixed;
+    left:0; right:0; bottom:0;
+    z-index:60;
+    background:var(--paper);
+    border-top:1px solid var(--line);
+    box-shadow:0 -6px 20px rgba(20,30,60,0.10);
+    padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+    transform:translateY(100%);
+    opacity:0;
+    transition:transform .25s ease, opacity .25s ease;
+    pointer-events:none;
+  }
+  .sticky-cta.is-visible{
+    transform:translateY(0);
+    opacity:1;
+    pointer-events:auto;
+  }
+  .sticky-cta-row{
+    max-width:1080px;
+    margin:0 auto;
+    display:flex;
+    gap:8px;
+  }
+  .sticky-cta-row .btn{
+    flex:1;
+    min-height:46px;
+    padding:10px 14px;
+    font-size:0.88rem;
+    white-space:nowrap;
+  }
+  @media (min-width:560px){
+    .sticky-cta-row{ justify-content:center; }
+    .sticky-cta-row .btn{ flex:0 1 auto; min-width:180px; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .sticky-cta{ transition:none; }
+  }
+
   /* ===== Brand bar ===== */
   .brand-bar{
     background:var(--paper);
@@ -288,7 +328,10 @@
   .hero-inner{
     position:relative;
     z-index:2;
-    padding:110px 0 48px;
+    /* padding-left/rightは指定しない（.wrapのpadding-left/right:20px(モバイル)/32px(PC)を
+       ここで上書きしてしまうと本文が画面端に張り付く。実際に発生していた不具合のため注意） */
+    padding-top:110px;
+    padding-bottom:48px;
     width:100%;
   }
   .hero-eyebrow{
@@ -1141,6 +1184,14 @@
   </div>
 </footer>
 
+<!-- スクロール追従CTA。#hero・#closingが画面内にある間は隠す（下のscriptで制御） -->
+<div class="sticky-cta" id="sticky-cta">
+  <div class="sticky-cta-row">
+    <a class="btn btn-cta" href="https://cs-harness.2520000530.workers.dev/chat/gururi360" target="_blank" rel="noopener noreferrer">AIチャットで相談</a>
+    <a class="btn btn-outline-navy" href="https://lin.ee/W7oKNWT" target="_blank" rel="noopener noreferrer">LINEで相談</a>
+  </div>
+</div>
+
 <script>
 (function(){
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1158,6 +1209,28 @@
     });
   }, { threshold:0.12, rootMargin:'0px 0px -40px 0px' });
   items.forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+<script>
+(function(){
+  var bar = document.getElementById('sticky-cta');
+  var hero = document.getElementById('hero');
+  var closing = document.getElementById('closing');
+  if(!bar || !hero || !closing || !('IntersectionObserver' in window)) return;
+  var heroVisible = true, closingVisible = false;
+  function update(){
+    bar.classList.toggle('is-visible', !heroVisible && !closingVisible);
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.target === hero) heroVisible = entry.isIntersecting;
+      if(entry.target === closing) closingVisible = entry.isIntersecting;
+    });
+    update();
+  }, { threshold:0 });
+  io.observe(hero);
+  io.observe(closing);
 })();
 </script>
 
