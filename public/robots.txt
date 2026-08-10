@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://gururi360.pages.dev/sitemap.xml
+Sitemap: https://gururi360.aosalonai.com/sitemap.xml
