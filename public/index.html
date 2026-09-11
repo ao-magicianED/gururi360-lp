@@ -752,6 +752,51 @@
   ul.price-note-list li{ list-style:disc; }
   ul.price-note-list li + li{ margin-top:5px; }
   ul.price-note-list strong{ color:var(--accent); }
+  /* 360度オプション無料キャンペーンの告知（しろもん料金ブロックの冒頭） */
+  .price-campaign{
+    margin-top:18px;
+    background:linear-gradient(135deg,#fff8ea 0%,#fdf1dd 100%);
+    border:2px solid var(--cta);
+    border-radius:var(--radius-m);
+    padding:20px 22px;
+  }
+  .price-campaign-tag{
+    display:inline-block;
+    background:var(--cta);
+    color:#fff;
+    font-size:0.74rem;
+    font-weight:800;
+    letter-spacing:0.08em;
+    padding:5px 14px;
+    border-radius:999px;
+    margin-bottom:12px;
+  }
+  .price-campaign-head{
+    font-size:clamp(1.02rem,3.2vw,1.3rem);
+    font-weight:800;
+    color:var(--cta-ink);
+    line-height:1.6;
+  }
+  .price-campaign-free{
+    display:inline-block;
+    background:var(--cta-ink);
+    color:#fff;
+    border-radius:var(--radius-s);
+    padding:2px 12px;
+    margin-top:4px;
+  }
+  .price-campaign-sub{
+    margin-top:12px;
+    font-size:0.93rem;
+    color:#5c4620;
+  }
+  .price-campaign-sub strong{ color:var(--cta-ink); }
+  .price-campaign-note{
+    margin-top:10px;
+    font-size:0.8rem;
+    color:#7b6840;
+    line-height:1.75;
+  }
   /* .table-scroll の margin-top:44px はブロック内では広すぎるので詰める */
   .price-block .table-scroll{ margin-top:16px; }
   .price-block .price-table-note{ margin-top:12px; }
@@ -1212,6 +1257,12 @@
         <span class="price-block-area">全国＋関東エリア担当</span>
         <span class="price-block-name">しろもん</span>
       </div>
+      <div class="price-campaign">
+        <span class="price-campaign-tag">数量限定キャンペーン</span>
+        <p class="price-campaign-head">360度オプションの撮影料金が<br><span class="price-campaign-free">先着5件まで 0円</span></p>
+        <p class="price-campaign-sub">しろもん に写真撮影をご依頼いただいた方限定の「モニターご協力枠」です。下の表の<strong>写真撮影の料金だけ</strong>で、360度撮影までまとめて対応します（追加費用なし）。</p>
+        <p class="price-campaign-note">※撮影実績・作例掲載・ご感想へのご協力をお願いしています。※あおのビューワー制作モニター価格（50,000円 → 30,000円）と併用できます。※5件ののちの料金は、実際の作業量を見ながら改めて設定します。</p>
+      </div>
       <div class="table-scroll">
         <table class="price-table">
           <caption class="sr-only">メインカメラマン・全国＋関東エリア担当 しろもん の撮影料金（税別・交通費別）</caption>
@@ -1270,8 +1321,6 @@
         </table>
       </div>
       <ul class="price-note-list">
-        <li><strong>360度オプションは先着5件まで「モニターご協力枠」として追加費用なし。</strong>写真撮影をご依頼いただいた方限定で、撮影実績・作例掲載・ご感想へのご協力をお願いしています。5件ののちの料金は、実際の作業量を見ながら改めて設定します。</li>
-        <li>ビューワー制作のモニター価格（50,000円 → 30,000円）とあわせてご利用いただけます。</li>
         <li>写真データは撮影当日に編集前の状態で納品。通常プランのレタッチ枚数は 1R〜1LDK 25枚／2K〜2LDK 30枚／3K以上 35枚。最低保証カット数の目安は 1R・1K 45／1LDK 60／2LDK 75／3LDK以上 90カットです（物件の構成や設備により、これを上回ることが多くあります）。</li>
         <li>追加オプション: お部屋の照明撮影 3,500円／部屋、バルコニー・テラス撮影 3,500円、共用部撮影 2,500円。</li>
         <li>交通費: 東京23区内は込み、23区外は実費。宿泊を伴う遠方撮影は交通費・宿泊費の実費に加え、遠方出張費 10,000円を申し受けます。</li>
