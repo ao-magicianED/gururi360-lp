@@ -4,3 +4,7 @@ node_modules/
 Thumbs.db
 .claude/
 .env
+
+__pycache__/
+*.pyc
+.playwright-mcp/
